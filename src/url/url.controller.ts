@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Catch, Res,UsePipes,ValidationPipe, HttpStatus, HttpException, ExceptionFilter, ArgumentsHost} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post,Res,UsePipes,ValidationPipe, HttpStatus} from '@nestjs/common';
 import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/createUrl.dto';
 import { Response } from 'express';
@@ -7,12 +7,11 @@ import { Response } from 'express';
 export class UrlController {
     constructor(private readonly UrlService: UrlService) {}
 
-    // toDo
-    // валидация ссылок в роутах
     @UsePipes(new ValidationPipe())
 
     //роут на укорачивание урла
     @Post('/shorten')
+    
     async create(@Body() createUrlDto: CreateUrlDto): Promise<any> {
         return this.UrlService.createShortUrl(createUrlDto);
     }

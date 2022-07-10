@@ -1,5 +1,5 @@
 import { customAlphabet } from 'nanoid';
-const nanoid = customAlphabet('12?34567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 6);
+const nanoid = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 6);
 
 export default async function generateRandomCode (repository: any): Promise<string> {
     const randomCode = nanoid();
