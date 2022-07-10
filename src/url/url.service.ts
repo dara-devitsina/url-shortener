@@ -49,7 +49,6 @@ export class UrlService {
 
     async findByCode(code: string): Promise<ShowUrlDto> {
         const result = await this.urlRepository.findOneBy({code});
-        console.log('result',result)
         if (!result) {
             throw new BadRequestException("Такой ссылки не существует!")
         }
