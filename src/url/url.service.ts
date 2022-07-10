@@ -39,8 +39,7 @@ export class UrlService {
         const result = await this.urlRepository.save(newShortUrl);
         return new ShowUrlDto(result.original_url, result.short_url, result.clicks_num);
     }
-
-    // toDo обновление кол-ва кликов
+    
     async updateUrl(code: string): Promise<ShowUrlDto> {
         const url = await this.findByCode(code)
         url.clicks_num = url.clicks_num += 1;
