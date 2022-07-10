@@ -24,6 +24,7 @@ export class UrlController {
         @Res() res: Response,
     ): Promise<any> {
         const url = await this.UrlService.findByCode(code);
+        await this.UrlService.updateUrl(code);
         return res.redirect(HttpStatus.PERMANENT_REDIRECT, url.original_url);
     }
 }

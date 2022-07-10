@@ -44,6 +44,8 @@ export class UrlService {
     async updateUrl(code: string): Promise<ShowUrlDto> {
         const url = await this.findByCode(code)
         url.clicks_num = url.clicks_num += 1;
+        console.log('URL', url);
+        
         return this.urlRepository.save(url) // UPDATE
     }
 
