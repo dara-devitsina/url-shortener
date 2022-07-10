@@ -44,6 +44,9 @@ services:
     env_file: .env
     volumes:
       - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
     networks:
       - mynetwork
-      
+
+volumes:
+  node_modules:
