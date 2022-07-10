@@ -1,0 +1,21 @@
+version: "3.9"
+
+networks:
+  mynetwork:
+    name: mynetwork
+
+services:
+  database:
+    image: postgres
+    container_name: postgres
+    restart: unless-stopped
+    volumes:
+      - D:\\posthre:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: "url-shortener"
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_USER: "postgres"
+    networks:
+      - mynetwork
