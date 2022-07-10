@@ -33,7 +33,7 @@ export class UrlService {
         const newShortUrl = this.urlRepository.create({
             code,
             original_url: dto.original_url,
-            short_url: `${LOCAL_DOMAIN}/${code}`,
+            short_url: `${LOCAL_DOMAIN}:${PORT}/${code}`,
             clicks_num: 0,
         });
         const result = await this.urlRepository.save(newShortUrl);
@@ -49,6 +49,7 @@ export class UrlService {
 
     async findByCode(code: string): Promise<ShowUrlDto> {
         const result = await this.urlRepository.findOneBy({code});
+        console.log('result',result)
         if (!result) {
             throw new BadRequestException("Такой ссылки не существует!")
         }
